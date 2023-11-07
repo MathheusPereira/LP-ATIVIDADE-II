@@ -1,59 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <time.h>
+#include <string.h>
 
 int main()
 {
+    setlocale(LC_ALL, "portuguese");
+
+    
     int numero;
-    int contadorPares = 0;
-    int contadorImpares = 0;
-    int somaImpares = 0;
-    int somaPares = 0;
+    int par;
+    int impar;
+    float somaPar = 0;
+    float somaImpar = 0;
+    int contaPar = 0;
+    int contaImpar = 0;
+    float mediaPar = 0;
+    float mediaImpar = 0;
 
-    while (1)
+    do
     {
-
-        printf("Digite os n˙meros inteiros:");
+        printf("Digite um n√∫mero inteiro: ");
         scanf("%d", &numero);
 
-        if (numero < 0)
+        if (numero > 0)
         {
-            break;
-        }
 
-        if (numero % 2 == 0)
-        {
-            somaPares += numero;
-            contadorPares++;
-        }
-        else
-        {
-            somaImpares += numero;
-            contadorImpares++;
-        }
-    }
+            if (numero % 2 == 0)
+            {
 
-    if (contadorPares > 0)
-    {
-        float mediaPares = (float)somaPares / contadorPares;
-        printf("Quantidade de n˙meros pares: %d\n", contadorPares);
-        printf("Media aritmÈtica dos n˙meros pares: %f\n", mediaPares);
-    }
-    else
-    {
-        printf("Nenhum n˙mero par foi digitado.\n");
-    }
+                contaPar++;
+                somaPar += +numero;
+            }
+            else
+            {
+                contaImpar++;
+                somaImpar += +numero;
+            }
+        }
+    } while (numero > 0);
 
-    if (contadorImpares > 0)
-    {
-        float mediaImpares = (float)somaImpares / contadorImpares;
-        printf("Quantidade de n˙meros Ìmpares: %d\n", contadorImpares);
-        printf("MÈdia aritmÈtica dos n˙meros Ìmpares: %f\n", mediaImpares);
-    }
-    else
-    {
-        printf("Nenhum n˙mero Ìmpar foi digitado.\n");
-    }
+    mediaPar = (float)somaPar / contaPar;
+    mediaImpar = (float)somaImpar / contaImpar;
+
+    printf("\n");
+    printf("Quantidade de n√∫meros Pares: %i\n", contaPar);
+    printf("Quantidade de n√∫meros √çmpares: %i\n", contaImpar);
+    printf("Media de n√∫mero Par : %.2f\n", mediaPar);
+    printf("Media de n√∫mero √≠mpar %.2f: \n", mediaImpar);
 
     return 0;
 }
